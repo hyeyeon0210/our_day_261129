@@ -605,13 +605,13 @@
      ═══════════════════════════════════════════ */
   function initPoem() {
     const contentEl = $('#poemContent');
-    if (contentEl) contentEl.textContent = CONFIG.poem.content;
 
-    const container = $('#poem');
-    if (container) {
-      const placeholder = container.querySelector('.loading-placeholder');
-      if (placeholder) placeholder.remove();
+    // 1. 시 본문 넣기 (줄바꿈 \n을 <br>로 변경하여 innerHTML로 안전하게 주입)
+    if (contentEl && CONFIG.poem && CONFIG.poem.content) {
+      const formattedContent = CONFIG.poem.content.replace(/\n/g, '<br>');
+      contentEl.innerHTML = formattedContent; 
     }
+
   }
 
   /* ═══════════════════════════════════════════
@@ -794,4 +794,43 @@
   } else {
     init();
   }
+
+    // ═══ Background Music Logic ═══
+    document.addEventListener('DOMContentLoaded', () => {
+        const bgm = document.getElementById('bgm');
+        const bgmBtn = document.getElementById('bgmBtn');
+        const curtainBtn = document.getElementById('curtainBtn');
+
+        // 음악 재생/정지 토글 함수
+        function toggleBGM() {
+            if (bgm.paused) {
+                bgm.play().then(() => {
+                    bgmBtn.classList.add('is-playing');
+                }).catch(err => {
+                    console.log("BGM 재생에 실패했습니다:", err);
+                });
+            } else {
+                bgm.pause();
+                bgmBtn.classList.remove('is-playing');
+            }
+        }
+
+        // 우측 상단 BGM 버튼을 직접 누를 때
+        bgmBtn.addEventListener('click', toggleBGM);
+
+        // 브라우저 제약 우회: "초대장 열기" 버튼을 누르면 자동으로 첫 재생 시작
+        if (curtainBtn) {
+            curtainBtn.addEventListener('click', () => {
+                // 딜레이를 살짝 주어 커튼이 열리는 연출과 함께 음악이 부드럽게 시작되도록 합니다
+                setTimeout(() => {
+                    bgm.play().then(() => {
+                        bgmBtn.classList.add('is-playing');
+                    }).catch(err => {
+                        // 사용자가 액션을 취했음에도 브라우저가 차단한 경우 대처
+                        console.log("자동 재생 정책으로 인해 정지 상태로 시작합니다.");
+                    });
+                }, 300);
+            });
+        }
+    });
 })();

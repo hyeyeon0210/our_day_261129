@@ -272,6 +272,68 @@ a {
 }
 
 /* ═══════════════════════════════════════════
+   Background Music Button
+   ═══════════════════════════════════════════ */
+.bgm-btn {
+    position: fixed;
+    top: calc(1rem + var(--safe-top));
+    right: calc(1rem + var(--safe-right));
+    z-index: 999; /* 커튼(9999)보다는 아래, 본문보다는 위에 위치 */
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid var(--color-accent-light);
+    color: var(--color-accent-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 12px rgba(196, 168, 212, 0.2);
+    transition: var(--transition);
+}
+
+    /* 아이콘 토글 기본 설정 */
+    .bgm-btn .icon-play {
+        display: none;
+    }
+
+    .bgm-btn .icon-mute {
+        display: block;
+    }
+
+    /* 재생 중일 때의 스타일 변경 */
+    .bgm-btn.is-playing {
+        background: rgba(232, 223, 240, 0.85);
+        color: var(--color-accent-dark);
+        animation: bgmPulse 2s infinite;
+    }
+
+        .bgm-btn.is-playing .icon-play {
+            display: block;
+        }
+
+        .bgm-btn.is-playing .icon-mute {
+            display: none;
+        }
+
+/* 재생 중일 때 동심원이 퍼지는 은은한 효과 */
+@keyframes bgmPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(196, 168, 212, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 8px rgba(196, 168, 212, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(196, 168, 212, 0);
+    }
+}
+
+/* ═══════════════════════════════════════════
    Curtain Opening (Watercolor Wash)
    ═══════════════════════════════════════════ */
 .curtain {
@@ -565,8 +627,10 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  padding: 0;
+  /*justify-content: flex-end;*/
+  justify-content: space-between;
+  /*padding: 0;*/
+  padding: calc(var(--spacing-xl) + var(--safe-top)) 0 0 0;
   overflow: hidden;
   background-color: var(--color-bg);
 }
@@ -638,6 +702,7 @@ a {
 }
 
 .hero__divider {
+  display: none;
   width: 50px;
   height: 2px;
   margin: 0 auto var(--spacing-md);
@@ -653,13 +718,13 @@ a {
 
 .hero__date,
 .hero__venue {
-  font-size: 0.8125rem;
+  font-size: 1rem;
   font-weight: 900;
   letter-spacing: 2px;
-  opacity: 0.75; /*0.75*/
+  opacity: 0.9; /*0.75*/
   line-height: 1.6;
   /*color: var(--color-text-light);*/
-  color: #222222;
+  color: #333333;
 }
 
 .hero__venue {
@@ -726,8 +791,6 @@ a {
 }
 
 .hero__names,
-.hero__date,
-.hero__venue,
 .countdown__number {
     /* 글자 색상에 맞춰 부드러운 화이트나 블랙 계열 스머지를 줍니다 */
     text-shadow: 0 1px 4px rgba(255, 255, 255, 0.8), 0 0 2px rgba(255, 255, 255, 0.5);
@@ -1340,25 +1403,25 @@ a {
    Print (hide interactive elements)
    ═══════════════════════════════════════════ */
 @media print {
-  .curtain,
-  .sparkle-canvas,
-  .photo-modal,
-  .toast,
-  .countdown,
-  .calendar-actions,
-  .location__links,
-  .location__copy,
-  .account-item__copy,
-  .wc-blob {
-    display: none !important;
-  }
+    .curtain,
+    .sparkle-canvas,
+    .photo-modal,
+    .toast,
+    .countdown,
+    .calendar-actions,
+    .location__links,
+    .location__copy,
+    .account-item__copy,
+    .wc-blob {
+        display: none !important;
+    }
 
-  .animate-item {
-    opacity: 1 !important;
-    transform: none !important;
-  }
+    .animate-item {
+        opacity: 1 !important;
+        transform: none !important;
+    }
 
-  .wc-divider {
-    display: none !important;
-  }
+    .wc-divider {
+        display: none !important;
+    }
 }
