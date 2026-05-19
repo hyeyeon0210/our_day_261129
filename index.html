@@ -22,8 +22,8 @@
     <script src="config.js"></script>
 </head>
 <body>
-    <!-- 오디오 -->>
-    <audio id="bgm" src="bgm/bgm.mp3" loop></audio>
+    <!-- 오디오 -->
+    <audio id="bgm" src="bgm/bgm.mp3" loop preload="auto"></audio>
 
     <button id="bgmBtn" class="bgm-btn" aria-label="배경음악 토글">
         <svg class="icon-mute" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -112,6 +112,7 @@
                 <h2 class="section__title animate-item" data-animate="fade-up" id="greetingTitle"></h2>
                 <p class="greeting__text animate-item" data-animate="fade-up" id="greetingContent"></p>
                 <div class="greeting__parents animate-item" data-animate="fade-up" id="greetingParents"></div>
+                <div style="height: 30px;"></div>
             </div>
             <div class="wc-divider"></div>
         </section>
