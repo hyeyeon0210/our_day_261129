@@ -137,6 +137,38 @@
             <div class="wc-divider"></div>
         </section>
 
+        <!-- ─── Location Section ─── -->
+        <section class="section location" id="location">
+            <div class="wc-blob wc-blob--location"></div>
+            <div class="section__inner">
+                <h2 class="section__title animate-item" data-animate="fade-up">오시는 길</h2>
+                <div class="location__info animate-item" data-animate="fade-up">
+                    <p class="location__venue" id="locationVenue"></p>
+                    <p class="location__hall" id="locationHall"></p>
+                    <p class="location__address" id="locationAddress"></p>
+                    <p class="location__tel" id="locationTel"></p>
+                </div>
+                <button class="btn btn--text location__copy animate-item" data-animate="fade-up" id="copyAddressBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="9" y="9" width="13" height="13" rx="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" /></svg>
+                    주소 복사
+                </button>
+                <div class="location__info animate-item" data-animate="fade-up">
+                    <p class="location__hall">[주차 안내]</p>
+                    <p class="location__address" id="locationAddress">본 건물 및 인근 주차장 2시간 무료</p>
+                    <p class="location__address" id="locationAddress">원활한 출차를 위해</p>
+                    <p class="location__address" id="locationAddress">웨딩홀 내 태블릿PC에 차량번호를 반드시 등록해주세요.</p>
+                </div>
+                <div class="location__map animate-item" data-animate="scale-in">
+                    <img class="location__map-img" id="locationMapImg" src="" alt="약도" loading="lazy">
+                </div>
+                <div class="location__links animate-item" data-animate="fade-up">
+                    <a class="btn btn--kakao" id="kakaoMapBtn" href="#" target="_blank" rel="noopener">카카오맵</a>
+                    <a class="btn btn--naver" id="naverMapBtn" href="#" target="_blank" rel="noopener">네이버지도</a>
+                </div>
+            </div>
+            <div class="wc-divider"></div>
+        </section>
+
         <!-- ─── Gallery Section ─── -->
         <section class="section gallery" id="gallery">
             <div class="wc-blob wc-blob--gallery"></div>
@@ -155,32 +187,6 @@
                     <div class="wc-ornament" style="margin-bottom: 20px;"></div>
 
                     <p class="greeting__text" id="poemContent" style="white-space: pre-wrap; word-break: keep-all;"></p>
-                </div>
-            </div>
-            <div class="wc-divider"></div>
-        </section>
-
-        <!-- ─── Location Section ─── -->
-        <section class="section location" id="location">
-            <div class="wc-blob wc-blob--location"></div>
-            <div class="section__inner">
-                <h2 class="section__title animate-item" data-animate="fade-up">오시는 길</h2>
-                <div class="location__info animate-item" data-animate="fade-up">
-                    <p class="location__venue" id="locationVenue"></p>
-                    <p class="location__hall" id="locationHall"></p>
-                    <p class="location__address" id="locationAddress"></p>
-                    <p class="location__tel" id="locationTel"></p>
-                </div>
-                <button class="btn btn--text location__copy animate-item" data-animate="fade-up" id="copyAddressBtn">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="9" y="9" width="13" height="13" rx="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" /></svg>
-                    주소 복사
-                </button>
-                <div class="location__map animate-item" data-animate="scale-in">
-                    <img class="location__map-img" id="locationMapImg" src="" alt="약도" loading="lazy">
-                </div>
-                <div class="location__links animate-item" data-animate="fade-up">
-                    <a class="btn btn--kakao" id="kakaoMapBtn" href="#" target="_blank" rel="noopener">카카오맵</a>
-                    <a class="btn btn--naver" id="naverMapBtn" href="#" target="_blank" rel="noopener">네이버지도</a>
                 </div>
             </div>
             <div class="wc-divider"></div>
